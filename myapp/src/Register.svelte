@@ -24,15 +24,8 @@ export let login
 
 <style>
 
-    :root {
+:root {
         background-color: var(--pico-background-color);
-    }
-
-    .register-container {
-        max-width: 400px;
-        margin: 0 auto;
-        padding: 1rem;
-        border-radius: 4px;
     }
 
     .form-group {
@@ -46,7 +39,6 @@ export let login
 
     input {
         width: 100%;
-        padding: 0.5rem;
         border: 1px solid #ccc;
         border-radius: 4px;
     }
@@ -66,15 +58,19 @@ export let login
     }
 
     .register{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 3rem;
+        margin-left: 2rem;
+        margin-right: 6rem;
+        margin-bottom: 3rem;
     }
 
     .left-side{
         flex: 1;
         padding: 2rem;
-        width: 100%;
+        width: auto;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -82,12 +78,13 @@ export let login
     }
 
     .right-side{
-        flex: 1;
-        padding: 2rem;
         border: 2px solid #ccc;
-        margin-left: 5rem;
         border-radius: 40px;
+        width: auto;
+        padding: 2rem;
+        height: 125vh
     }
+
     .login-btn{
         color: #007bff;
         background-color: transparent;

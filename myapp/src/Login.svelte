@@ -1,13 +1,21 @@
 <script>
     export let register; // Accept `register` as a prop
+    import StudentDashboard from './StudentDashboard.svelte';
 
     let email = '';
     let password = '';
+    let showDashboard = false;
 
-    function handleSubmit() {
-        // Handle login logic here
-        console.log('Username:', email);
-        console.log('Password:', password);
+    function handleSubmit(event) {
+        event.preventDefault(); // Prevent form submission reload
+
+        if (email === "a@d" && password === "123") {
+            console.log("Login successful!");
+            showDashboard = true; // Show StudentDashboard
+        } else {
+            console.log("Invalid Credentials");
+            alert("Invalid Credentials");
+        }
     }
 </script>
 
@@ -22,13 +30,6 @@
         background-color: var(--pico-background-color);
     }
 
-    .login-container {
-        max-width: 400px;
-        margin: 0 auto;
-        padding: 1rem;
-        border-radius: 4px;
-    }
-
     .form-group {
         margin-bottom: 1rem;
     }
@@ -40,7 +41,6 @@
 
     input {
         width: 100%;
-        padding: 0.5rem;
         border: 1px solid #ccc;
         border-radius: 4px;
     }
@@ -60,15 +60,18 @@
     }
 
     .login{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 6rem;
+        margin-left: 2rem;
+        margin-right: 6rem;
     }
 
     .left-side{
         flex: 1;
         padding: 2rem;
-        width: 100%;
+        width: auto;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -76,11 +79,10 @@
     }
 
     .right-side{
-        flex: 1;
-        padding: 2rem;
         border: 2px solid #ccc;
-        margin-left: 5rem;
         border-radius: 40px;
+        width: auto;
+        padding: 2rem;
     }
 
     .register-btn{
@@ -94,27 +96,32 @@
     }
 </style>
 
-<div class="login">
-    <div class="left-side">
-        <h1>Welcome to Project Submission Portal</h1>
-    </div>
-    <div class="right-side">
-        <div class="login-container">
-            <h2>Login</h2>
-            <form>
-                <div class="form-group">
-                    <label for="username">Email</label>
-                    <input type="text" id="email" bind:value={email} required />
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" bind:value={password} required />
-                </div>
-                <button type="submit" onclick={handleSubmit}>Login</button>
-                <div class="register">
-                    <p>Don't have an account? <button type="button" onclick={register} class="register-btn">Register</button></p>
-                </div>
-            </form>
+{#if showDashboard}
+    <StudentDashboard />
+
+{:else}
+    <div class="login">
+        <div class="left-side">
+            <h1>Welcome to Project Submission Portal</h1>
+        </div>
+        <div class="right-side">
+            <div class="login-container">
+                <h2>Login</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" bind:value={email} required />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" bind:value={password} required />
+                    </div>
+                    <button type="submit" onclick={handleSubmit}>Login</button>
+                    <div class="register">
+                        <p>Don't have an account? <button type="button" onclick={register} class="register-btn">Register</button></p>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+{/if}
