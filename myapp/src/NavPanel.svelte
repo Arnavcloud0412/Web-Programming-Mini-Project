@@ -1,21 +1,6 @@
-<script>
-    import { createEventDispatcher } from 'svelte';
-
-    const dispatch = createEventDispatcher();
-
-    const handleTabClick = (tab) => {
-        dispatch('tabChange', tab); // Dispatch event with tab name
-    };
-
-</script>
-
 <nav class="nav-menu">
-    <button class="nav-item" on:click={() => handleTabClick('Team Info')}>Team Info</button>
-    <button class="nav-item" on:click={() => handleTabClick('Project Details')}>Project Details</button>
-    <button class="nav-item" on:click={() => handleTabClick('Upload')}>Upload</button>
-    <button class="nav-item" on:click={() => handleTabClick('Grades')}>Grades</button>
-    <button class="nav-item" on:click={() => handleTabClick('Announcements')}>Announcements</button>
-    <button class="contrast" on:click={() => handleTabClick('Announcements')}>Logout</button>
+    <h3 class="nav-item">Student Info</h3>
+    <p>Name</p>
 </nav>
 
 <link
@@ -55,18 +40,7 @@
         text-decoration: none;
         color: var(--text-color);
         transition: background-color 0.2s;
-    }
-
-    .contrast {
-        background-color: #dc3545;
-        color: #fff;
+        background-color: var(--bg-color);
         border: none;
-        border-radius: 0.25rem;
-        padding: 0.5rem 1rem;
-        cursor: pointer;
-    }
-
-    .contrast:hover {
-        background-color: #c82333;
     }
 </style>

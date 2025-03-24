@@ -5,4 +5,14 @@ export const student = {
     division: "A",
     year: 3,
     email: "johndoe@example.com",
+    subjects: {
+        "Mathematics": {},
+        "Computer Science": {},
+        "Physics": {},
+        "Chemistry": {},
+        "Biology": {},
+        "English": {},
+        "History": {},
+        "Geography": {}
+    }
 };
